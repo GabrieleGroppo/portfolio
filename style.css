@@ -418,6 +418,48 @@ section:first-of-type {
 .project-card-wide {
     grid-column: 1 / -1;
     padding: 32px;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    grid-template-areas:
+        "icon title arrow"
+        "icon text  arrow"
+        "icon stack arrow";
+    column-gap: 28px;
+    row-gap: 8px;
+    align-items: center;
+}
+
+.project-card-wide .project-icon {
+    grid-area: icon;
+    width: 96px;
+    height: 96px;
+    border-radius: 22px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+}
+
+.project-card-wide h4 { grid-area: title; align-self: end; }
+.project-card-wide p { grid-area: text; flex: none; }
+.project-card-wide .project-stack { grid-area: stack; align-self: start; }
+.project-card-wide .project-arrow { grid-area: arrow; align-self: start; }
+
+@media (max-width: 560px) {
+    .project-card-wide {
+        grid-template-columns: auto 1fr;
+        grid-template-areas:
+            "icon title"
+            "text text"
+            "stack stack"
+            "arrow arrow";
+    }
+
+    .project-card-wide .project-icon {
+        width: 64px;
+        height: 64px;
+        border-radius: 15px;
+    }
+
+    .project-card-wide h4 { align-self: center; }
+    .project-card-wide .project-arrow { justify-self: end; }
 }
 
 .project-card-wide h4 {
